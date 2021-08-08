@@ -16,7 +16,7 @@ read-only ~/.config/Trolltech.conf
 read-only ~/.config/qt5ct
 
 caps.drop all
-#ipc-namespace
+ipc-namespace
 #machine-id
 net none
 netfilter
@@ -34,28 +34,39 @@ seccomp
 #shell none
 
 disable-mnt
+private-cache
 private-dev
+private-opt none
 private-tmp
 
 dbus-user none
 dbus-system none
 
 blacklist /boot
-blacklist /etc/portage
 blacklist /etc/gentoo-release
 blacklist /etc/lsb-release
 blacklist /etc/os-release
 blacklist /etc/portage
-blacklist /opt
 blacklist /usr/local
 blacklist /usr/portage
 blacklist /usr/src
 blacklist /usr/tmp
+blacklist /var/cache/edb
+blacklist /var/cache/eix
+blacklist /var/db
+blacklist /var/lib/bluetooth
+blacklist /var/lib/dhcpcd
+blacklist /var/lib/gentoo
+blacklist /var/lib/misc
+blacklist /var/lib/portage
+blacklist /var/lib/sddm
 
 include disable-common.inc
 include disable-devel.inc
+#include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+#include disable-shell.inc
 include disable-write-mnt.inc
 include disable-xdg.inc

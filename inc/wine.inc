@@ -1,3 +1,3 @@
-# TODO: What syscalls need to be enabled?
-ignore seccomp
+# No idea why literally any "seccomp" option works...
+seccomp !chroot
 include ~/.config/firejail/inc/default.inc

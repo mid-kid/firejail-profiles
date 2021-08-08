@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=
+GenericName=
 Exec=~/.config/firejail/setup.sh
 Icon=
 Categories=

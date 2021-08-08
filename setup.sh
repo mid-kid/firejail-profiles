@@ -6,15 +6,21 @@ XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 
 extra_args=()
 
-if [ "$1" = '--net' ]; then
-    shift
-    extra_args+="--ignore=net none"
-fi
-
-if [ "$1" = '--debug' ]; then
-    shift
-    extra_args+="--debug"
-fi
+while true; do
+    case "$1" in
+        --net)
+            extra_args+="--ignore=net none"
+            shift
+            ;;
+        --debug*)
+            extra_args+="$1"
+            shift
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
 
 prog="$1"; shift
 setup="$(realpath "$(dirname "$0")/setup")"
@@ -57,3 +63,4 @@ trap "rm -rf '$tmp'" EXIT
 
 cp "$setup/$prog.sh" "$tmp"
 firejail "${extra_args[@]}" --whitelist="$tmp" --profile="$XDG_CONFIG_HOME/firejail/$prog.profile" --join-or-start="$prog" sh "$tmp/$prog.sh" "$@"
+#firejail "${extra_args[@]}" sh "$tmp/$prog.sh" "$@"

@@ -8,9 +8,9 @@ fetch() {
     trap "rm -rf '$tmp'" EXIT
 
     cd "$tmp"
-    wget 'https://cancel.fm/dl/Ripcord-0.4.26-x86_64.AppImage'
+    wget 'https://cancel.fm/dl/Ripcord-0.4.28-x86_64.AppImage'
     mkdir -p "$prefix"
-    mv 'Ripcord-0.4.26-x86_64.AppImage' "$prefix/Ripcord.AppImage"
+    mv 'Ripcord-0.4.28-x86_64.AppImage' "$prefix/Ripcord.AppImage"
     chmod +x "$prefix/Ripcord.AppImage"
 }
 

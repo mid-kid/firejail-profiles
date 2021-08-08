@@ -8,9 +8,9 @@ fetch() {
     trap "rm -rf '$tmp'" EXIT
 
     cd "$tmp"
-    wget 'https://packages.microsoft.com/yumrepos/ms-teams/teams-1.3.00.16851-1.x86_64.rpm'
-    rpm2tar 'teams-1.3.00.16851-1.x86_64.rpm'
-    tar xf 'teams-1.3.00.16851-1.x86_64.tar'
+    wget 'https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.4.00.7556_amd64.deb'
+    ar x 'teams_1.4.00.7556_amd64.deb'
+    tar xf data.tar.xz
     mkdir -p "$prefix"
     mv usr "$prefix"
 }

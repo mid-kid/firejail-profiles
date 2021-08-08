@@ -6,8 +6,8 @@ whitelist ~/.config/Microsoft/Microsoft Teams
 
 private-bin readlink,dirname,mkdir,nohup
 
-ignore nodbus
 ignore novideo
 ignore nosound
 ignore seccomp
+include ~/.config/firejail/inc/libappindicator.inc
 include ~/.config/firejail/inc/electron.inc

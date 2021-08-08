@@ -6,7 +6,7 @@ set -e
 prefix="${prefix:-$HOME/.local/opt/osu}"
 
 # God fucking shit breaking every updatae aaaaaaaaaaaaaaaaa
-WINE=wine #-staging-5.21
+WINE=wine #-staging-6.5
 
 export WINEARCH=win32
 export WINEPREFIX="$prefix"

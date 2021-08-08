@@ -3,13 +3,16 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/steam}"
 
+# To launch in offline mode:
+# Set "WantsOfflineMode" "1" in ~/.steam/steam/config/loginusers.vdf
+
 fetch() {
     tmp=$(mktemp -d)
     trap "rm -rf '$tmp'" EXIT
 
     cd "$tmp"
-    wget 'https://repo.steampowered.com/steam/archive/precise/steam_1.0.0.68.tar.gz'
-    tar xf 'steam_1.0.0.68.tar.gz'
+    wget 'https://repo.steampowered.com/steam/archive/precise/steam_latest.tar.gz'
+    tar xf 'steam_latest.tar.gz'
     mkdir -p "$prefix"
     mv steam-launcher/* "$prefix"
 }

@@ -10,6 +10,7 @@ whitelist ~/.steam
 # Random games that use different folders
 whitelist ~/.local/share/Daedalic Entertainment
 whitelist ~/.config/unity3d
+whitelist ~/.config/StardewValley
 
 # Needs /sbin/ldconfig...
 noblacklist /sbin
@@ -17,14 +18,11 @@ noblacklist /sbin
 # Game controllers...
 ignore private-dev
 
-ignore dbus-user none
-ignore dbus-system none
-dbus-user filter
-dbus-system filter
 protocol unix,inet,inet6,netlink
 ignore net none
 ignore no3d
 ignore nosound
 ignore seccomp
 include allow-python3.inc
+include ~/.config/firejail/inc/libappindicator.inc
 include ~/.config/firejail/inc/default.inc

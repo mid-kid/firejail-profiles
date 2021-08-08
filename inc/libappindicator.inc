@@ -1,0 +1,3 @@
+# Allow libappindicator applications to just fail finding the indicator daemon...
+ignore dbus-user none
+dbus-user filter

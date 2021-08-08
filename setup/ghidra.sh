@@ -8,10 +8,10 @@ fetch() {
     trap "rm -rf '$tmp'" EXIT
 
     cd "$tmp"
-    wget 'https://ghidra-sre.org/ghidra_9.2.2_PUBLIC_20201229.zip'
-    unzip 'ghidra_9.2.2_PUBLIC_20201229.zip'
+    wget 'https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.0.1_build/ghidra_10.0.1_PUBLIC_20210708.zip'
+    unzip 'ghidra_10.0.1_PUBLIC_20210708.zip'
     mkdir -p "$prefix"
-    mv ghidra_9.2.2_PUBLIC/* "$prefix"
+    mv ghidra_10.0.1_PUBLIC/* "$prefix"
 }
 
 run() {

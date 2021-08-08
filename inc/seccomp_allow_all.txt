@@ -1,0 +1,2 @@
+# Paste this in a profile and start removing things until it breaks, I guess.
+seccomp !@aio,!@basic-io,!@chown,!@clock,!@cpu-emulation,!@debug,!@default,!@default-nodebuggers,!@default-keep,!@file-system,!@io-event,!@ipc,!@keyring,!@memlock,!@module,!@mount,!@network-io,!@obsolete,!@privileged,!@process,!@raw-io,!@reboot,!@resources,!@setuid,!@swap,!@sync,!@system-service,!@timer
