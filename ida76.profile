@@ -1,4 +1,4 @@
-whitelist ~/.local/share/firejail/ida75
+whitelist ~/.local/share/firejail/ida76
 
 whitelist ~/Stuff/Workspace/IDA
 whitelist ~/Stuff/Workspace/hackthebox

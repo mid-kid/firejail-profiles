@@ -60,6 +60,7 @@ blacklist /var/lib/gentoo
 blacklist /var/lib/misc
 blacklist /var/lib/portage
 blacklist /var/lib/sddm
+blacklist ${RUNUSER}
 
 include disable-common.inc
 include disable-devel.inc

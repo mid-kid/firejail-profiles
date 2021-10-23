@@ -10,8 +10,8 @@ whitelist ~/.config/discord
 #mkdir ~/.config/BetterDiscord
 #whitelist ~/.config/BetterDiscord
 
-#ignore nodbus
-ignore nosound
 ignore novideo
+include ~/.config/firejail/inc/pulse.inc
+include ~/.config/firejail/inc/fcitx.inc
 include ~/.config/firejail/inc/discord-ipc.inc
 include ~/.config/firejail/inc/electron.inc

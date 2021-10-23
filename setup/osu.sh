@@ -35,11 +35,11 @@ EOF
     fi
 
     WINEDLLOVERRIDES='mscoree=' winecfg
-    W_TMP="$tmp" "$tmp/winetricks" -q --force dotnet45
-    W_TMP="$tmp" "$tmp/winetricks" gdiplus corefonts cjkfonts  # optional
-    "$tmp/winetricks" ddr=opengl fontsmooth=rgb sound=alsa strictdrawordering=enabled
-    regedit "$tmp/directsound-latency.reg"
-    vblank_mode=0 __GL_SYNC_TO_VBLANK=0 $exec $WINE "$tmp/osu!install.exe"
+    W_TMP="$tmp" WINETRICKS_DONWLOADER=wget ./winetricks -q --force dotnet45
+    W_TMP="$tmp" WINETRICKS_DOWNLOADER=wget ./winetricks gdiplus corefonts cjkfonts  # optional
+    ./winetricks ddr=opengl fontsmooth=rgb sound=alsa strictdrawordering=enabled
+    regedit directsound-latency.reg
+    vblank_mode=0 __GL_SYNC_TO_VBLANK=0 $exec $WINE "osu!install.exe"
 }
 
 run() {

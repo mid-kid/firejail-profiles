@@ -3,13 +3,15 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/stm32cubemx}"
 
+version=630
+
 fetch() {
     tmp=$(mktemp -d)
     trap "rm -rf '$tmp'" EXIT
 
     cd "$tmp"
-    wget 'https://sw-center.st.com/packs/resource/library/stm32cube_mx_v621-lin.zip'
-    unzip 'stm32cube_mx_v621-lin.zip'
+    wget "https://sw-center.st.com/packs/resource/library/stm32cube_mx_v$version-lin.zip"
+    unzip "stm32cube_mx_v$version-lin.zip"
     mkdir -p "$prefix"
     mv -T MX "$prefix"
 }
@@ -23,7 +25,7 @@ run() {
     ln -sf "$XDG_DATA_HOME/stm32cubemx/java_prefs" "$HOME/.java/.userPrefs/com/st"
 
     cd "$prefix"
-    exec java -jar STM32CubeMX "$@"
+    exec /usr/lib64/openjdk-11/bin/java -jar STM32CubeMX "$@"
 }
 
 case "$1" in

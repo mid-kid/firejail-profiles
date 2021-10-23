@@ -10,7 +10,10 @@ whitelist ~/.steam
 # Random games that use different folders
 whitelist ~/.local/share/Daedalic Entertainment
 whitelist ~/.config/unity3d
+# Stardew Valley
 whitelist ~/.config/StardewValley
+# Magicka 2 (link from ~/.bitsquid)
+whitelist ~/.config/bitsquid
 
 # Needs /sbin/ldconfig...
 noblacklist /sbin

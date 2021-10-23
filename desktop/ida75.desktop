@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=IDA Pro 7.5 (32-bit)
-Exec=~/.config/firejail/setup.sh ida75
-Icon=ida
-Categories=Development;Debugger;

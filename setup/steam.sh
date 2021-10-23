@@ -19,6 +19,10 @@ fetch() {
 
 run() {
     cd "$prefix"
+    XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+    mkdir -p "$XDG_CONFIG_HOME/bitsquid"
+    ln -sf "$XDG_CONFIG_HOME/bitsquid" "$HOME/.bitsquid"
+
     export PROTON_USE_WINED3D=1
     exec ./steam "$@"
 }

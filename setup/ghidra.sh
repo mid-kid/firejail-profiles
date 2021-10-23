@@ -3,15 +3,18 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/ghidra}"
 
+version=10.0.3
+version_full="${version}_PUBLIC_20210908"
+
 fetch() {
     tmp=$(mktemp -d -p /var/tmp)  # This package is huge
     trap "rm -rf '$tmp'" EXIT
 
     cd "$tmp"
-    wget 'https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.0.1_build/ghidra_10.0.1_PUBLIC_20210708.zip'
-    unzip 'ghidra_10.0.1_PUBLIC_20210708.zip'
+    wget "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_${version}_build/ghidra_$version_full.zip"
+    unzip "ghidra_$version_full.zip"
     mkdir -p "$prefix"
-    mv ghidra_10.0.1_PUBLIC/* "$prefix"
+    mv -T "ghidra_${version}_PUBLIC" "$prefix"
 }
 
 run() {

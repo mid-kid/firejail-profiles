@@ -3,13 +3,15 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/discord}"
 
+version=0.0.16
+
 fetch() {
     tmp=$(mktemp -d)
     trap "rm -rf '$tmp'" EXIT
     cd "$tmp"
 
-    wget 'https://dl.discordapp.net/apps/linux/0.0.13/discord-0.0.13.tar.gz'
-    tar xf 'discord-0.0.13.tar.gz'
+    wget "https://dl.discordapp.net/apps/linux/$version/discord-$version.tar.gz"
+    tar xf "discord-$version.tar.gz"
     mkdir -p "$prefix"
     mv Discord/* "$prefix"
     chmod +x "$prefix/Discord"
@@ -22,7 +24,7 @@ better() {
 
     wget 'https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl'
     chmod +x 'betterdiscordctl'
-    ./betterdiscordctl -d "$prefix" -m "${XDG_CONFIG_HOME:-$HOME/.config}/discord/0.0.10/modules/" "$@"
+    ./betterdiscordctl -d "$prefix" -m "${XDG_CONFIG_HOME:-$HOME/.config}/discord/$version/modules/" "$@"
 }
 
 run() {

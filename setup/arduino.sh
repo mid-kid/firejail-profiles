@@ -3,15 +3,17 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/arduino}"
 
+version=1.8.16
+
 fetch() {
     tmp=$(mktemp -d)
     trap "rm -rf '$tmp'" EXIT
 
     cd "$tmp"
-    wget 'https://downloads.arduino.cc/arduino-1.8.13-linux64.tar.xz'
-    tar xf 'arduino-1.8.13-linux64.tar.xz'
+    wget "https://downloads.arduino.cc/arduino-$version-linux64.tar.xz"
+    tar xf "arduino-$version-linux64.tar.xz"
     mkdir -p "$prefix"
-    mv arduino-1.8.13/* "$prefix"
+    mv -T "arduino-$version" "$prefix"
 }
 
 run() {
@@ -19,6 +21,8 @@ run() {
     XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
     mkdir -p "$XDG_DATA_HOME/arduino"
     ln -sf "$XDG_DATA_HOME/arduino" "$HOME/.arduino15"
+    mkdir -p "$XDG_DATA_HOME/arduino/jssc"
+    ln -sf "$XDG_DATA_HOME/arduino/jssc" "$HOME/.jssc"
 
     cd "$prefix"
     exec ./arduino "$@"
