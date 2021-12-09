@@ -24,8 +24,9 @@ ignore private-dev
 protocol unix,inet,inet6,netlink
 ignore net none
 ignore no3d
-ignore nosound
 ignore seccomp
+ignore noinput
 include allow-python3.inc
+include ~/.config/firejail/inc/pulse.inc
 include ~/.config/firejail/inc/libappindicator.inc
 include ~/.config/firejail/inc/default.inc

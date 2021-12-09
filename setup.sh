@@ -26,13 +26,13 @@ prog="$1"; shift
 setup="$(realpath "$(dirname "$0")/setup")"
 export prefix="$XDG_DATA_HOME/firejail/$prog"
 
-if [ "$prog" = discord -o \
-     "$prog" = osu -o \
-     "$prog" = osulazer -o \
-     "$prog" = clonehero ]; then
-    mkdir -p /tmp/discord-ipc/pulse
-    ln -sf "$XDG_RUNTIME_DIR/pulse"/* /tmp/discord-ipc/pulse/
-fi
+#if [ "$prog" = discord -o \
+     #"$prog" = osu -o \
+     #"$prog" = osulazer -o \
+     #"$prog" = clonehero ]; then
+    #mkdir -p /tmp/discord-ipc/pulse
+    #ln -sf "$XDG_RUNTIME_DIR/pulse"/* /tmp/discord-ipc/pulse/
+#fi
 
 if [ "$1" = shell ]; then
     shift

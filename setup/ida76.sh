@@ -6,7 +6,7 @@ prefix="${prefix:-$HOME/.local/opt/ida76}"
 export WINEARCH=win64
 export WINEPREFIX="$prefix"
 
-version_python=3.9.7
+version_python=3.10.0
 
 download() {
     url="$1"
@@ -20,7 +20,7 @@ fetch() {
     mkdir -p "$prefix"
     cd "$prefix"
 
-    #download "https://www.python.org/ftp/python/$version_python/python-$version_python-amd64.exe"
+    download "https://www.python.org/ftp/python/$version_python/python-$version_python-amd64.exe"
 }
 
 setup() {
@@ -32,19 +32,17 @@ setup() {
 
     winecfg
 
-    #winecfg -v win10
-    #wine "python-$version_python-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1
-    #rm "python-$version_python-amd64.exe"
+    winecfg -v win10
+    wine "python-$version_python-amd64.exe" /passive InstallAllUsers=1 PrependPath=1
+    rm "python-$version_python-amd64.exe"
 
     7z x ida76sp1.7z
-    unzip -o -d ida76sp1 ida76sp1_python39_win.zip
-    rm ida76sp1.7z ida76sp1_python39_win.zip
-
+    rm ida76sp1.7z
     mkdir -p "$WINEPREFIX/drive_c/Program Files"
     mv -v ida76sp1 "$WINEPREFIX/drive_c/Program Files/IDA Pro 7.6"
 
-    #wine "$WINEPREFIX/drive_c/Program Files/IDA Pro 7.6/idapyswitch.exe" -a
-    #wine reg delete 'HKCU\Software\Hex-Rays\IDA' /v Python3TargetDLL /f
+    wine "$WINEPREFIX/drive_c/Program Files/IDA Pro 7.6/idapyswitch.exe" -a
+    wine cmd /c reg delete 'HKCU\Software\Hex-Rays\IDA' /v Python3TargetDLL /f
 }
 
 run() {

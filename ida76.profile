@@ -3,7 +3,6 @@ whitelist ~/.local/share/firejail/ida76
 whitelist ~/Stuff/Workspace/IDA
 whitelist ~/Stuff/Workspace/hackthebox
 
-# IDA seems to hate this one
-blacklist /usr/share/fonts/noto-emoji
-
+allow-debuggers
+ignore ipc-namespace
 include ~/.config/firejail/inc/wine.inc

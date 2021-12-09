@@ -15,6 +15,7 @@ read-only ~/.config/gtk-3.0/settings.ini
 read-only ~/.config/Trolltech.conf
 read-only ~/.config/qt5ct
 
+#apparmor
 caps.drop all
 ipc-namespace
 #machine-id
@@ -23,6 +24,7 @@ netfilter
 no3d
 nodvd
 #nogroups
+noinput
 nonewprivs
 noroot
 nosound
@@ -32,6 +34,7 @@ novideo
 protocol unix,inet,inet6
 seccomp
 #shell none
+#tracelog
 
 disable-mnt
 private-cache
