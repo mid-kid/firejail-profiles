@@ -1,4 +1,5 @@
 #!/bin/sh
+# appimage=LISTEN.moe.AppImage
 set -e
 
 prefix="${prefix:-$HOME/.local/opt/listenmoe}"
@@ -16,7 +17,7 @@ fetch() {
 
 run() {
     cd "$prefix"
-    ./LISTEN.moe.AppImage "$@"
+    exec ./LISTEN.moe.AppImage "$@"
 }
 
 case "$1" in

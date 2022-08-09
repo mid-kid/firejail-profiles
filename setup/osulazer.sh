@@ -1,4 +1,5 @@
 #!/bin/sh
+# appimage=osu.AppImage
 set -e
 
 prefix="${prefix:-$HOME/.local/opt/osulazer}"
@@ -18,7 +19,7 @@ fetch() {
 
 run() {
     cd "$prefix"
-    ./osu.AppImage "$@"
+    exec ./osu.AppImage "$@"
 }
 
 case "$1" in

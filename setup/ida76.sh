@@ -47,7 +47,7 @@ setup() {
 
 run() {
     cd "$WINEPREFIX/drive_c/Program Files/IDA Pro 7.6"
-    exec wine "ida${1:-}.exe"
+    exec wine start "ida${1:-}.exe"
 }
 
 case "$1" in

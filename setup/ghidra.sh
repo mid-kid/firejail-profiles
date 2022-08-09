@@ -3,8 +3,8 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/ghidra}"
 
-version=10.0.4
-version_full="${version}_PUBLIC_20210928"
+version=10.1.5
+version_full="${version}_PUBLIC_20220726"
 
 fetch() {
     tmp=$(mktemp -d -p /var/tmp)  # This package is huge

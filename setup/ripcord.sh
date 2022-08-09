@@ -1,4 +1,5 @@
 #!/bin/sh
+# appimage=Ripcord.AppImage
 set -e
 
 prefix="${prefix:-$HOME/.local/opt/ripcord}"
@@ -16,7 +17,7 @@ fetch() {
 
 run() {
     cd "$prefix"
-    ./Ripcord.AppImage "$@"
+    exec ./Ripcord.AppImage "$@"
 }
 
 case "$1" in

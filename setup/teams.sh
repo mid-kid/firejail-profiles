@@ -3,13 +3,19 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/teams}"
 
+version=1.5.00.10453
+
+# Libsecret install:
+# git clone -b 0.20.5 --depth=1 https://gitlab.gnome.org/GNOME/libsecret libsecret-src
+# meson -Dvapi=false -Dgtk_doc=false _build
+
 fetch() {
     tmp=$(mktemp -d)
     trap "rm -rf '$tmp'" EXIT
 
     cd "$tmp"
-    wget 'https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.4.00.7556_amd64.deb'
-    ar x 'teams_1.4.00.7556_amd64.deb'
+    wget "https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_${version}_amd64.deb"
+    ar x "teams_${version}_amd64.deb"
     tar xf data.tar.xz
     mkdir -p "$prefix"
     mv usr "$prefix"

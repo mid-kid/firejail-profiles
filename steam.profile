@@ -14,6 +14,10 @@ whitelist ~/.config/unity3d
 whitelist ~/.config/StardewValley
 # Magicka 2 (link from ~/.bitsquid)
 whitelist ~/.config/bitsquid
+# Stellaris
+whitelist ~/.paradoxlauncher
+whitelist ~/.config/paradox-launcher-v2
+whitelist ~/.local/share/Paradox Interactive
 
 # Needs /sbin/ldconfig...
 noblacklist /sbin

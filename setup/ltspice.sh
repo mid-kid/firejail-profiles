@@ -17,7 +17,7 @@ setup() {
 }
 
 run() {
-    exec wine "C:\\windows\\command\\start.exe" /Unix "$WINEPREFIX/dosdevices/c:/users/$USER/Start Menu/LTspice XVII.lnk"
+    exec wine "C:\\windows\\command\\start.exe" /Unix "$WINEPREFIX/dosdevices/c:/users/$USER/AppData/Roaming/Microsoft/Windows/Start Menu/LTspice XVII.lnk" "$@"
 }
 
 case "$1" in
