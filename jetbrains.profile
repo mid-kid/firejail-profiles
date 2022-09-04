@@ -22,7 +22,6 @@ whitelist ~/.config/ideavim
 whitelist ~/Stuff/Workspace/JetBrains
 
 ignore net none
-ignore no3d
 ignore private-cache
 ignore include disable-devel.inc
 ignore include disable-interpreters.inc
