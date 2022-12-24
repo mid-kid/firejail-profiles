@@ -12,18 +12,14 @@ mkdir ~/.cache/JetBrains
 noblacklist ~/.cache/JetBrains/CLion*
 whitelist ~/.cache/JetBrains
 
-noblacklist ~/.config/Google
-whitelist ~/.cache/Google
-whitelist ~/.config/Google
-whitelist ~/.local/share/Google
-
 whitelist ~/.config/ideavim
 
-whitelist ~/Stuff/Workspace/JetBrains
+whitelist ~/Stuff/Workspace/JetBrains/*
 
-ignore net none
+#ignore net none
 ignore private-cache
 ignore include disable-devel.inc
 ignore include disable-interpreters.inc
-include ~/.config/firejail/inc/libappindicator.inc
+noblacklist /proc/sys/fs
+noblacklist /proc/sys/*/*
 include ~/.config/firejail/inc/default.inc

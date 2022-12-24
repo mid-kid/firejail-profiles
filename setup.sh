@@ -31,11 +31,13 @@ if [ "$1" = shell ]; then
 fi
 
 if [ "$1" = fetch ]; then
-    exec "$setup/$prog.sh" fetch
+    shift
+    exec "$setup/$prog.sh" fetch "$@"
 fi
 
 if [ ! -d "$prefix" ]; then
-    "$setup/$prog.sh" fetch
+    shift
+    "$setup/$prog.sh" fetch "$@"
 fi
 mkdir -p "$prefix"
 

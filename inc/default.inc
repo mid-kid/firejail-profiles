@@ -7,6 +7,7 @@ whitelist ~/.config/qt5ct
 whitelist ~/.gtkrc-2.0
 whitelist ~/.icons
 whitelist ~/.themes
+whitelist ~/.asoundrc
 read-only ~/.Xdefaults
 read-only ~/.config/Trolltech.conf
 read-only ~/.config/gtk-2.0/gtkrc
@@ -16,6 +17,7 @@ read-only ~/.config/qt5ct
 read-only ~/.gtkrc-2.0
 read-only ~/.icons
 read-only ~/.themes
+read-only ~/.asoundrc
 
 #apparmor
 caps.drop all
@@ -73,7 +75,9 @@ include disable-common.inc
 include disable-devel.inc
 #include disable-exec.inc
 include disable-interpreters.inc
+include disable-proc.inc
 include disable-programs.inc
 #include disable-shell.inc
 include disable-write-mnt.inc
+#include disable-X11.inc
 include disable-xdg.inc

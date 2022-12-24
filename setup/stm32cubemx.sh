@@ -6,7 +6,7 @@ prefix="${prefix:-$HOME/.local/opt/stm32cubemx}"
 version=661
 
 # Set to whatever you've set your user's -Djava.util.prefs.userRoot to...
-JAVA_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/java"
+JAVA_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/java"
 
 fetch() {
     tmp=$(mktemp -d -p /var/tmp)
@@ -27,8 +27,8 @@ run() {
     ln -sf "$XDG_DATA_HOME/stm32cubemx" "$HOME/.stm32cubemx"
     mkdir -p "$XDG_DATA_HOME/stm32cubemx/data"
     ln -sf "$XDG_DATA_HOME/stm32cubemx/data" "$HOME/STM32Cube"
-    mkdir -p "$XDG_DATA_HOME/stm32cubemx/java_prefs" "$JAVA_ROOT/.java"
-    ln -sf "$XDG_DATA_HOME/stm32cubemx/java_prefs" "$JAVA_ROOT/.java/.userPrefs"
+    mkdir -p "$XDG_DATA_HOME/stm32cubemx/java_prefs" "$JAVA_CONFIG/.java"
+    ln -sf "$XDG_DATA_HOME/stm32cubemx/java_prefs" "$JAVA_CONFIG/.java/.userPrefs"
 
     cd "$prefix"
     exec java -jar STM32CubeMX "$@"
