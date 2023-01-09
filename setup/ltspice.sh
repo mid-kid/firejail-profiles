@@ -11,9 +11,9 @@ setup() {
     trap "rm -rf '$tmp'" EXIT
 
     cd "$tmp"
-    wget 'http://ltspice.analog.com/software/LTspiceXVII.exe'
+    wget 'https://ltspice.analog.com/software/LTspice64.exe'
     winecfg
-    exec wine "$tmp/LTspiceXVII.exe"
+    exec wine "$tmp/LTspice64.exe"
 }
 
 run() {
