@@ -36,7 +36,6 @@ if [ "$1" = fetch ]; then
 fi
 
 if [ ! -d "$prefix" ]; then
-    shift
     "$setup/$prog.sh" fetch "$@"
 fi
 mkdir -p "$prefix"

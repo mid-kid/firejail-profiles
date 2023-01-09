@@ -46,6 +46,8 @@ fetch() {
 
     cd "$tmp"
     wget "https://download-cdn.jetbrains.com/$downdir/$archive.tar.gz"
+
+    mkdir -p "$prefix"
     tar xf "$archive.tar.gz" -C "$prefix"
 }
 
