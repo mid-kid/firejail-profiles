@@ -1,7 +1,6 @@
 whitelist ~/.local/share/firejail/ida76
 
-whitelist ~/Stuff/Workspace/IDA
-whitelist ~/Stuff/Workspace/hackthebox
+whitelist ~/Stuff/Workspace/IDA/*
 
 blacklist /usr/share/fonts
 
