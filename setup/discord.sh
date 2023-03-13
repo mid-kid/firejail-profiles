@@ -3,7 +3,7 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/discord}"
 
-version=0.0.22
+version=0.0.25
 
 fetch() {
     tmp=$(mktemp -d)

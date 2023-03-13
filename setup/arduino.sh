@@ -3,29 +3,28 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/arduino}"
 
-version=1.8.16
+version=2.0.4
 
 fetch() {
     tmp=$(mktemp -d)
     trap "rm -rf '$tmp'" EXIT
 
     cd "$tmp"
-    wget "https://downloads.arduino.cc/arduino-$version-linux64.tar.xz"
-    tar xf "arduino-$version-linux64.tar.xz"
+    wget "https://downloads.arduino.cc/arduino-ide/arduino-ide_${version}_Linux_64bit.zip"
+    unzip "arduino-ide_${version}_Linux_64bit.zip"
     mkdir -p "$prefix"
-    mv -T "arduino-$version" "$prefix"
+    mv -T "arduino-ide_${version}_Linux_64bit" "$prefix"
 }
 
 run() {
     # XDG Base Directory specification
     XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
-    mkdir -p "$XDG_DATA_HOME/arduino"
-    ln -sf "$XDG_DATA_HOME/arduino" "$HOME/.arduino15"
-    mkdir -p "$XDG_DATA_HOME/arduino/jssc"
-    ln -sf "$XDG_DATA_HOME/arduino/jssc" "$HOME/.jssc"
+    mkdir -p "$XDG_DATA_HOME/arduino-ide"
+    ln -sf "$XDG_DATA_HOME/arduino-ide" "$HOME/.arduino15"
 
     cd "$prefix"
-    exec ./arduino "$@"
+    export LD_LIBRARY_PATH="$PWD/libsecret:$LD_LIBRARY_PATH"
+    exec ./arduino-ide "$@"
 }
 
 case "$1" in
@@ -33,7 +32,7 @@ case "$1" in
     run) shift; run "$@"; exit ;;
 esac
 
-if [ ! -f "$prefix/arduino" ]; then
+if [ ! -f "$prefix/arduino-ide" ]; then
     fetch
 fi
 run "$@"
