@@ -3,7 +3,7 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/discord}"
 
-version=0.0.25
+version=0.0.26
 
 fetch() {
     tmp=$(mktemp -d)
@@ -22,9 +22,10 @@ better() {
     trap "rm -rf '$tmp'" EXIT
     cd "$tmp"
 
-    wget 'https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl'
-    chmod +x 'betterdiscordctl'
-    ./betterdiscordctl -d "$prefix" -m "${XDG_CONFIG_HOME:-$HOME/.config}/discord/$version/modules/" "$@"
+    wget 'https://github.com/BetterDiscord/Installer/releases/latest/download/BetterDiscord-Linux.AppImage'
+    chmod +x BetterDiscord-Linux.AppImage
+    ./BetterDiscord-Linux.AppImage --appimage-extract
+    "$PWD/squashfs-root/AppRun" "$@"
 }
 
 run() {

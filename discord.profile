@@ -4,11 +4,12 @@ mkdir ~/.config/discord
 noblacklist ~/.config/discord
 whitelist ~/.config/discord
 
-# betterdiscord
-#mkdir ~/.local/share/betterdiscordctl
-#whitelist ~/.local/share/betterdiscordctl
-#mkdir ~/.config/BetterDiscord
-#whitelist ~/.config/BetterDiscord
+# BetterDiscord
+mkdir ~/.config/BetterDiscord
+whitelist ~/.config/BetterDiscord
+
+# BetterDiscord installer
+#private-bin mktemp,wget,rm,chmod,readlink,dirname
 
 ignore novideo
 include ~/.config/firejail/inc/pulse.inc
