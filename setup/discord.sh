@@ -3,15 +3,13 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/discord}"
 
-version=0.0.27
-
 fetch() {
     tmp=$(mktemp -d)
     trap "rm -rf '$tmp'" EXIT
     cd "$tmp"
 
-    wget "https://dl.discordapp.net/apps/linux/$version/discord-$version.tar.gz"
-    tar xf "discord-$version.tar.gz"
+    wget -O discord.tar.gz "https://discord.com/api/download?platform=linux&format=tar.gz"
+    tar xf discord.tar.gz
     mkdir -p "$prefix"
     mv Discord/* "$prefix"
     chmod +x "$prefix/Discord"
