@@ -8,8 +8,14 @@ whitelist ~/.config/discord
 mkdir ~/.config/BetterDiscord
 whitelist ~/.config/BetterDiscord
 
+# setup/discord.sh
+private-bin mktemp,wget,rm,mv,chmod
+
 # BetterDiscord installer
-#private-bin mktemp,wget,rm,chmod,readlink,dirname
+#private-bin readlink,dirname
+
+# OpenASAR
+private-bin unzip
 
 ignore novideo
 include ~/.config/firejail/inc/pulse.inc

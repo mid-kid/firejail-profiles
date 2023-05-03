@@ -3,7 +3,7 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/discord}"
 
-version=0.0.26
+version=0.0.27
 
 fetch() {
     tmp=$(mktemp -d)
@@ -15,6 +15,18 @@ fetch() {
     mkdir -p "$prefix"
     mv Discord/* "$prefix"
     chmod +x "$prefix/Discord"
+
+    # I use this to send images
+    mkdir -p "$prefix/send"
+}
+
+asar() {
+    tmp=$(mktemp -d)
+    trap "rm -rf '$tmp'" EXIT
+    cd "$tmp"
+
+    wget 'https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar'
+    mv app.asar "$prefix/resources/app.asar"
 }
 
 better() {
@@ -39,6 +51,7 @@ run() {
 
 case "$1" in
     fetch) shift; fetch; exit ;;
+    asar) shift; asar "$@"; exit ;;
     better) shift; better "$@"; exit ;;
     run) shift; run "$@"; exit ;;
 esac
