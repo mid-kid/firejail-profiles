@@ -15,6 +15,7 @@ fetch() {
 
     mkdir -p "$prefix"
     mv -T "session-desktop-linux-x86_64-$version.AppImage" "$prefix/session-desktop.AppImage"
+    chmod +x "$prefix/session-desktop.AppImage"
 }
 
 run() {
@@ -27,7 +28,7 @@ case "$1" in
     run) shift; run "$@"; exit ;;
 esac
 
-if [ ! -f "$prefix/session-desktop.AppImage" ]; then
+if [ ! -x "$prefix/session-desktop.AppImage" ]; then
     fetch
 fi
 run "$@"
