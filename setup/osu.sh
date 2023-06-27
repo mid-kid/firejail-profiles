@@ -6,7 +6,7 @@ set -e
 prefix="${prefix:-$HOME/.local/opt/osu}"
 
 # God fucking shit breaking every updatae aaaaaaaaaaaaaaaaa
-WINE=wine-staging-7.15
+WINE=wine #wine-staging-7.15
 
 export WINEARCH=win32
 export WINEPREFIX="$prefix"
@@ -25,8 +25,7 @@ setup() {
 REGEDIT4
 
 [HKEY_CURRENT_USER\Software\Wine\DirectSound]
-"_HelBuflen"="8192"
-"SndQueueMax"="2"
+"HelBuflen"="512"
 EOF
     chmod +x winetricks
 
@@ -35,15 +34,17 @@ EOF
     fi
 
     WINEDLLOVERRIDES='mscoree=' winecfg
-    W_TMP="$tmp" WINETRICKS_DONWLOADER=wget ./winetricks -q --force dotnet45
-    W_TMP="$tmp" WINETRICKS_DOWNLOADER=wget ./winetricks gdiplus corefonts cjkfonts  # optional
-    ./winetricks ddr=opengl fontsmooth=rgb sound=alsa strictdrawordering=enabled
+    WINETRICKS_DOWNLOADER=wget ./winetricks -q dotnet48
+    WINETRICKS_DOWNLOADER=wget ./winetricks gdiplus  # Graphical fixes
+    WINETRICKS_DOWNLOADER=wget ./winetricks \
+        corefonts vlgothic meiryo cjkfonts  # Optional fonts
+    ./winetricks renderer=gl fontsmooth=rgb sound=alsa
     regedit directsound-latency.reg
     vblank_mode=0 __GL_SYNC_TO_VBLANK=0 $exec $WINE "osu!install.exe"
 }
 
 run() {
-    vblank_mode=0 __GL_SYNC_TO_VBLANK=0 $exec $WINE "$WINEPREFIX/drive_c/users/$USER/Local Settings/Application Data/osu!/osu!.exe" "$@"
+    vblank_mode=0 __GL_SYNC_TO_VBLANK=0 $exec $WINE "$WINEPREFIX/drive_c/users/$USER/AppData/Local/osu!/osu!.exe" "$@"
 }
 
 # Discord wants a PID higher than 10???

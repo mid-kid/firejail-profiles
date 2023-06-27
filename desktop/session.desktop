@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Session
+Exec=~/.config/firejail/setup.sh session
+Terminal=false
+Type=Application
+Icon=session
+StartupWMClass=Session
+X-AppImage-Version=1.10.8
+Comment=Private messaging from your desktop
+Categories=Network;
