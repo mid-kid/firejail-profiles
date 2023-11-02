@@ -3,7 +3,7 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/arduino}"
 
-version=2.0.4
+version=2.1.1
 
 fetch() {
     tmp=$(mktemp -d)
@@ -11,9 +11,8 @@ fetch() {
 
     cd "$tmp"
     wget "https://downloads.arduino.cc/arduino-ide/arduino-ide_${version}_Linux_64bit.zip"
-    unzip "arduino-ide_${version}_Linux_64bit.zip"
     mkdir -p "$prefix"
-    mv -T "arduino-ide_${version}_Linux_64bit" "$prefix"
+    unzip -d "$prefix" "arduino-ide_${version}_Linux_64bit.zip"
 }
 
 run() {
