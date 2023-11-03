@@ -8,10 +8,10 @@ prefix="$HOME/.local/share/firejail/osu"
 eval "$(grep -m 1 '^WINE=' "${XDG_CONFIG_HOME:-$HOME/.config}/firejail/setup/osu.sh")"
 WINE="${WINE:-wine}"
 
-mkdir -p "$prefix/temp"
+mkdir -p "$prefix/tmp"
 
 for x in "$@"; do
     b="$(basename -- "$x")"
-    mv -f -- "$x" "$prefix/temp/$b"
-    WINEPREFIX="$prefix" "${XDG_CONFIG_HOME:-$HOME/.config}"/firejail/setup.sh osu shell "$WINE" "C:/users/$USER/Local Settings/Application Data/osu!/osu!.exe" "Z:$prefix/temp/$b"
+    mv -f -- "$x" "$prefix/tmp/$b"
+    WINEPREFIX="$prefix" "${XDG_CONFIG_HOME:-$HOME/.config}"/firejail/setup.sh osu shell "$WINE" "C:/users/$USER/AppData/Local/osu!/osu!.exe" "Z:$prefix/tmp/$b"
 done
