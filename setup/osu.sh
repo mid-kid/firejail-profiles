@@ -8,18 +8,19 @@ prefix="${prefix:-$HOME/.local/opt/osu}"
 # God fucking shit breaking every updatae aaaaaaaaaaaaaaaaa
 WINE=wine #wine-staging-7.15
 
-export WINEARCH=win32
+export WINEARCH=win32  # Like it or not, osu! is 32-bit only.
 export WINEPREFIX="$prefix"
 export WINEDLLPATH="$prefix/bin64:$prefix/bin32"
 
-export PULSE_LATENCY_MSEC=22
+#export PULSE_LATENCY_MSEC=22
+export vblank_mode=0
+export __GL_SYNC_TO_VBLANK=0
 
 setup() {
     tmp=$(mktemp -d)
     trap "rm -rf '$tmp'" EXIT
 
     cd "$tmp"
-    wget 'http://m1.ppy.sh/r/osu!install.exe'
     wget 'https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks'
     cat > directsound-latency.reg << 'EOF'
 REGEDIT4
@@ -33,26 +34,26 @@ EOF
         echo "WARNING: cabextract not found, necessary for installing..."
     fi
 
-    WINEDLLOVERRIDES='mscoree=' winecfg
+    # Roughly following lutris install script
+    # https://lutris.net/games/install/30085/view
+    WINEDLLOVERRIDES='mscoree,mshtml=' winecfg
     WINETRICKS_DOWNLOADER=wget ./winetricks -q dotnet48
     WINETRICKS_DOWNLOADER=wget ./winetricks gdiplus  # Graphical fixes
     WINETRICKS_DOWNLOADER=wget ./winetricks \
         corefonts vlgothic meiryo cjkfonts  # Optional fonts
-    ./winetricks renderer=gl fontsmooth=rgb sound=alsa
-    regedit directsound-latency.reg
-    vblank_mode=0 __GL_SYNC_TO_VBLANK=0 $exec $WINE "osu!install.exe"
+    ./winetricks sound=alsa
+    $WINE regedit directsound-latency.reg
+
+    # Cleanup unnecessary files
+    rm -rf "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*/SetupCache
+
+    wget 'http://m1.ppy.sh/r/osu!install.exe'
+    $exec $WINE "osu!install.exe"
 }
 
 run() {
-    vblank_mode=0 __GL_SYNC_TO_VBLANK=0 $exec $WINE "$WINEPREFIX/drive_c/users/$USER/AppData/Local/osu!/osu!.exe" "$@"
+    $exec $WINE "$WINEPREFIX/drive_c/users/$USER/AppData/Local/osu!/osu!.exe" "$@"
 }
-
-# Discord wants a PID higher than 10???
-exec=exec
-if [ -e $XDG_RUNTIME_DIR/discord-ipc-0 ]; then
-    exec=''
-    for x in $(seq 1 10); do /bin/true; done
-fi
 
 case "$1" in
     fetch) exit ;;  # Installation requires download
