@@ -12,7 +12,6 @@ export WINEARCH=win32  # Like it or not, osu! is 32-bit only.
 export WINEPREFIX="$prefix"
 export WINEDLLPATH="$prefix/bin64:$prefix/bin32"
 
-#export PULSE_LATENCY_MSEC=22
 export vblank_mode=0
 export __GL_SYNC_TO_VBLANK=0
 
