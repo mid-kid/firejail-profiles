@@ -1,7 +1,9 @@
 [Desktop Entry]
 Type=Application
 Name=osu!
+GenericName=Circle-clicking rhythm game
 Comment=A free-to-win rhythm game. Rhythm is just a *click* away!
 Exec=~/.config/firejail/setup.sh osu %F
 Icon=osu
 Categories=Game;
+Terminal=true
