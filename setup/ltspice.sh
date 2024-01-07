@@ -11,13 +11,13 @@ setup() {
     trap "rm -rf '$tmp'" EXIT
 
     cd "$tmp"
-    wget 'https://ltspice.analog.com/software/LTspice64.exe'
+    wget 'https://ltspice.analog.com/software/LTspice64.msi'
     winecfg
-    exec wine "$tmp/LTspice64.exe"
+    exec wine "$tmp/LTspice64.msi"
 }
 
 run() {
-    exec wine "C:\\windows\\command\\start.exe" /Unix "$WINEPREFIX/dosdevices/c:/users/$USER/AppData/Roaming/Microsoft/Windows/Start Menu/LTspice XVII.lnk" "$@"
+    exec wine "C:\\users\\mid-kid\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\LTspice\\LTspice.lnk" "$@"
 }
 
 case "$1" in
