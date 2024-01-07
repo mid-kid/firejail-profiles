@@ -5,6 +5,7 @@ prefix="${prefix:-$HOME/.local/opt/ltspice}"
 
 export WINEARCH=win64
 export WINEPREFIX="$prefix"
+export WINEDLLOVERRIDES='mscoree,mshtml='
 
 setup() {
     tmp=$(mktemp -d)
@@ -13,7 +14,10 @@ setup() {
     cd "$tmp"
     wget 'https://ltspice.analog.com/software/LTspice64.msi'
     winecfg
-    exec wine "$tmp/LTspice64.msi"
+    wine "$tmp/LTspice64.msi"
+
+    # Cleanup unnecessary files
+    rm -r "$prefix/drive_c/windows/Installer"
 }
 
 run() {
