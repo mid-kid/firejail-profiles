@@ -14,17 +14,22 @@ fetch() {
     mv Discord/* "$prefix"
     chmod +x "$prefix/Discord"
 
+    fetch_asar  # Install by default
+
     # I use this to send images
     mkdir -p "$prefix/send"
+}
+
+fetch_asar() {
+    wget 'https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar'
+    mv app.asar "$prefix/resources/app.asar"
 }
 
 asar() {
     tmp=$(mktemp -d)
     trap "rm -rf '$tmp'" EXIT
     cd "$tmp"
-
-    wget 'https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar'
-    mv app.asar "$prefix/resources/app.asar"
+    fetch_asar
 }
 
 better() {
