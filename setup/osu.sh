@@ -45,6 +45,7 @@ EOF
     $WINE regedit directsound-latency.reg
 
     # Cleanup unnecessary files
+    rm -r "$prefix/drive_c/windows/Installer"
     rm -r "$prefix/drive_c/windows/assembly"
     rm "$prefix/drive_c/windows/Microsoft.NET"/NETFXRepair.*
     rm "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*.exe
