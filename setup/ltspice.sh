@@ -21,7 +21,7 @@ setup() {
 }
 
 run() {
-    exec wine "C:\\users\\mid-kid\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\LTspice\\LTspice.lnk" "$@"
+    exec wine "C:\\users\\$USER\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\LTspice\\LTspice.lnk" "$@"
 }
 
 case "$1" in
