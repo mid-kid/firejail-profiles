@@ -3,8 +3,8 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/ghidra}"
 
-version=10.3
-version_full="${version}_PUBLIC_20230510"
+version=11.0.1
+version_full="${version}_PUBLIC_20240130"
 
 fetch() {
     tmp=$(mktemp -d -p /var/tmp)  # This package is huge
@@ -18,7 +18,6 @@ fetch() {
 }
 
 run() {
-    # XDG Base Directory specification
     XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
     mkdir -p "$XDG_DATA_HOME/ghidra"
     ln -sfT "$XDG_DATA_HOME/ghidra" "$HOME/.ghidra"
