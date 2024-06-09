@@ -4,7 +4,7 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/session}"
 
-version=1.11.0
+version=1.12.3
 
 fetch() {
     tmp=$(mktemp -d)
