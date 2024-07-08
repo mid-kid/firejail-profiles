@@ -1,7 +1,7 @@
 whitelist ~/.local/share/firejail/ghidra
 
-mkdir ~/.local/share/ghidra
-whitelist ~/.local/share/ghidra
+mkdir ~/.config/ghidra
+whitelist ~/.config/ghidra
 
 whitelist ~/Stuff/Workspace/IDA/*
 
