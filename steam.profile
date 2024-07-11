@@ -15,22 +15,26 @@ whitelist ~/.config/StardewValley
 # Magicka 2 (link from ~/.bitsquid)
 whitelist ~/.config/bitsquid
 # Stellaris
-whitelist ~/.paradoxlauncher
 whitelist ~/.config/paradox-launcher-v2
 whitelist ~/.local/share/Paradox Interactive
-
-# Needs /sbin/ldconfig...
-noblacklist /sbin
 
 # Game controllers...
 ignore private-dev
 
+# Steam needs to sandbox itself as well...
+#ignore seccomp
+seccomp !chroot,!mount,!name_to_handle_at,!pivot_root,!ptrace,!umount2
+seccomp.32 !process_vm_readv
+noblacklist /proc/sys/kernel/overflowuid
+noblacklist /proc/sys/kernel/overflowgid
+
+# It needs /sbin/ldconfig...
+noblacklist /sbin
+
 protocol unix,inet,inet6,netlink
 ignore net none
 ignore no3d
-ignore seccomp
 ignore noinput
-include allow-python3.inc
 include ~/.config/firejail/inc/pulse.inc
 include ~/.config/firejail/inc/libappindicator.inc
 include ~/.config/firejail/inc/default.inc
