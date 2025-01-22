@@ -1,3 +1,5 @@
+# vim:ft=firejail
+
 # TODO: Make seccomp more specific
 ignore seccomp
 include allow-java.inc

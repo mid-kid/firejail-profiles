@@ -1,3 +1,5 @@
+# vim:ft=firejail
+
 whitelist ~/.Xdefaults
 whitelist ~/.config/Trolltech.conf
 whitelist ~/.config/gtk-2.0/gtkrc

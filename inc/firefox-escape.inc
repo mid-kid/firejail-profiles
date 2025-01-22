@@ -1,3 +1,5 @@
+# vim:ft=firejail
+
 # firefox sandbox ecaping...
 noblacklist ~/.mozilla
 whitelist ~/.mozilla/firefox/profiles.ini

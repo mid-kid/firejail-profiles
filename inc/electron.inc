@@ -1,3 +1,5 @@
+# vim:ft=firejail
+
 # Sane set of exposed files for electron
 # From /etc/firejail/discord-common.profile
 private-bin bash,cut,echo,egrep,fish,grep,head,sed,sh,tclsh,tr,xdg-mime,xdg-open,zsh
