@@ -5,8 +5,8 @@ noblacklist ~/.config/discord
 whitelist ~/.config/discord
 
 # BetterDiscord
-mkdir ~/.config/BetterDiscord
-whitelist ~/.config/BetterDiscord
+#mkdir ~/.config/BetterDiscord
+#whitelist ~/.config/BetterDiscord
 
 # setup/discord.sh
 private-bin mktemp,wget,rm,mv,chmod
