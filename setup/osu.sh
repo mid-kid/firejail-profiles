@@ -6,7 +6,7 @@ set -e
 prefix="${prefix:-$HOME/.local/opt/osu}"
 
 # God fucking shit breaking every updatae aaaaaaaaaaaaaaaaa
-WINE=wine #wine-staging-7.15
+WINE=wine-staging-9.20
 
 export WINEARCH=win32  # Like it or not, osu! is 32-bit only.
 export WINEPREFIX="$prefix"
