@@ -1,7 +1,6 @@
 # vim:ft=firejail
 
-# TODO: Make seccomp more specific
-ignore seccomp
+seccomp !chroot
 include allow-java.inc
 noblacklist ${PATH}/javac
 include ~/.config/firejail/inc/default.inc

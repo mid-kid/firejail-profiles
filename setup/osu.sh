@@ -6,7 +6,7 @@ set -e
 prefix="${prefix:-$HOME/.local/opt/osu}"
 
 # God fucking shit breaking every updatae aaaaaaaaaaaaaaaaa
-WINE=wine-staging-9.20
+WINE=wine  #wine-staging-9.20
 
 export WINEARCH=win32  # Like it or not, osu! is 32-bit only.
 export WINEPREFIX="$prefix"
@@ -29,6 +29,7 @@ REGEDIT4
 "HelBuflen"="512"
 EOF
     chmod +x winetricks
+    export WINETRICKS_DOWNLOADER=wget
 
     if ! command -v cabextract > /dev/null 2> /dev/null; then
         echo "WARNING: cabextract not found, necessary for installing..."
@@ -37,10 +38,9 @@ EOF
     # Roughly following lutris install script
     # https://lutris.net/games/install/30085/view
     winecfg
-    WINETRICKS_DOWNLOADER=wget ./winetricks -q dotnet48
-    WINETRICKS_DOWNLOADER=wget ./winetricks gdiplus  # Graphical fixes
-    WINETRICKS_DOWNLOADER=wget ./winetricks \
-        corefonts vlgothic meiryo cjkfonts  # Optional fonts
+    ./winetricks -q dotnet48
+    ./winetricks gdiplus  # Graphical fixes
+    ./winetricks corefonts vlgothic meiryo cjkfonts  # Optional fonts
     ./winetricks sound=alsa
     $WINE regedit directsound-latency.reg
 
