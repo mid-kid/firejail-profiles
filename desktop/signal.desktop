@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Signal
-Exec=~/.config/firejail/setup.sh signal %U
+Exec=~/.config/firejail/setup.sh signal --disable-smooth-scrolling %U
 Terminal=false
 Type=Application
 Icon=signal
