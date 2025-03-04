@@ -11,4 +11,5 @@ ignore nosound
 protocol unix,inet,inet6,netlink
 include ~/.config/firejail/inc/discord-ipc.inc
 include ~/.config/firejail/inc/firefox-escape.inc
+include ~/.config/firejail/inc/pulse.inc
 include ~/.config/firejail/inc/wine.inc

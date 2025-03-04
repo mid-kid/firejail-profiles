@@ -2,4 +2,5 @@
 
 ignore nosound
 noblacklist ${RUNUSER}
-whitelist ${RUNUSER}/pulse
+whitelist ${RUNUSER}/pulse/native
+whitelist ${RUNUSER}/pipewire-?
