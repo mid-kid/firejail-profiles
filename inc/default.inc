@@ -22,15 +22,22 @@ read-only ~/.themes
 read-only ~/.asoundrc
 
 include disable-common.inc
-include disable-devel.inc
+#include disable-devel.inc
 #include disable-exec.inc
 #include disable-interpreters.inc
 include disable-proc.inc
 include disable-programs.inc
 #include disable-shell.inc
 include disable-write-mnt.inc
-#include disable-X11.inc
 include disable-xdg.inc
+#include disable-X11.inc
+
+#include whitelist-common.inc
+#include whitelist-player-common.inc
+#include whitelist-run-common.inc
+#include whitelist-runuser-common.inc
+#include whitelist-usr-share-common.inc
+#include whitelist-var-common.inc
 
 #apparmor
 caps.drop all

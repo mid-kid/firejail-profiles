@@ -6,15 +6,19 @@ prefix="${prefix:-$HOME/.local/opt/jetbrains}"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 
-version_clion=2022.3
+version_all=2024.3.5
+
+version_clion="$version_all"
 downdir_clion=cpp
 archive_clion="CLion-$version_clion"
 dirname_clion="clion-$version_clion"
-version_pycharm=2022.3
+
+version_pycharm="$version_all"
 downdir_pycharm=python
 archive_pycharm="pycharm-professional-$version_pycharm"
 dirname_pycharm="pycharm-$version_pycharm"
-version_pycharm_community=2022.3
+
+version_pycharm_community="$version_pycharm"
 downdir_pycharm_community=python
 archive_pycharm_community="pycharm-community-$version_pycharm_community"
 dirname_pycharm_community="$archive_pycharm_community"
@@ -37,18 +41,15 @@ fi
 
 prefix_app="$prefix/$dirname"
 
-# Set to whatever you've set your user's -Djava.util.prefs.userRoot to...
-JAVA_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/java"
+# jetbrains complains about this variable...
+unset _JAVA_OPTIONS
 
 fetch() {
-    tmp=$(mktemp -d)
-    trap "rm -rf '$tmp'" EXIT
-
-    cd "$tmp"
-    wget "https://download-cdn.jetbrains.com/$downdir/$archive.tar.gz"
-
     mkdir -p "$prefix"
-    tar xf "$archive.tar.gz" -C "$prefix"
+    cd "$prefix"
+    wget -c "https://download-cdn.jetbrains.com/$downdir/$archive.tar.gz"
+    tar xf "$archive.tar.gz"
+    rm "$archive.tar.gz"
 }
 
 setup() {
@@ -58,11 +59,11 @@ setup() {
 run() {
     test -d "$prefix_app" || fetch
 
-    mkdir -p "$XDG_DATA_HOME/JetBrains/java_prefs" "$JAVA_CONFIG/.java"
-    ln -sf "$XDG_DATA_HOME/JetBrains/java_prefs" "$JAVA_CONFIG/.java/.userPrefs"
+    mkdir -p "$XDG_DATA_HOME/JetBrains/java_prefs" "$HOME/.java"
+    ln -sf "$XDG_DATA_HOME/JetBrains/java_prefs" "$HOME/.java/.userPrefs"
 
     cd "$prefix_app"
-    exec "./bin/$name.sh" "$@"
+    exec "./bin/$name" "$@"
 }
 
 case "$cmd" in
