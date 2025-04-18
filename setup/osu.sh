@@ -47,12 +47,14 @@ EOF
     # Cleanup unnecessary files
     rm -r "$prefix/drive_c/windows/Installer"
     rm -r "$prefix/drive_c/windows/assembly"
+    rm -r "$prefix/drive_c/windows/temp"
     rm "$prefix/drive_c/windows/Microsoft.NET"/NETFXRepair.*
     rm "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*.exe
     rm "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*.dll
     rm "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*.hkf
     rm -r "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*/WPF
     rm -r "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*/SetupCache
+    rm -r "$prefix/drive_c/users/$USER/AppData/Local/Temp"
 
     wget 'http://m1.ppy.sh/r/osu!install.exe'
     $exec $WINE "osu!install.exe"
