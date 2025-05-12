@@ -35,6 +35,7 @@ protocol unix,inet,inet6,netlink
 ignore net none
 ignore no3d
 ignore noinput
+dbus-user.own com.steampowered.PressureVessel.*
 include ~/.config/firejail/inc/pulse.inc
 include ~/.config/firejail/inc/libappindicator.inc
 include ~/.config/firejail/inc/default.inc
