@@ -3,12 +3,12 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/signal}"
 
-# curl https://updates.signal.org/desktop/apt/dists/xenial/main/binary-amd64/Packages.gz | zcat | grep '^Version:' | tac
-version=7.43.0
-
 fetch() {
     tmp=$(mktemp -d)
     trap "rm -rf '$tmp'" EXIT
+
+    version_url="https://updates.signal.org/desktop/apt/dists/xenial/main/binary-amd64/Packages.gz"
+    version=$(curl "$version_url" | zcat | sed -n '/~beta/d;s/^Version: //p' | head -n1)
 
     cd "$tmp"
     wget "https://updates.signal.org/desktop/apt/pool/s/signal-desktop/signal-desktop_${version}_amd64.deb"
