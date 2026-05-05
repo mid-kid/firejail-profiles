@@ -8,7 +8,8 @@ prefix="${prefix:-$HOME/.local/opt/osu}"
 # God fucking shit breaking every updatae aaaaaaaaaaaaaaaaa
 WINE=wine  #wine-staging-9.20
 
-export WINEARCH=win32  # Like it or not, osu! is 32-bit only.
+#export WINEARCH=win32  # Like it or not, osu! is 32-bit only.
+export WINEARCH=wow64
 export WINEPREFIX="$prefix"
 export WINEDLLOVERRIDES='mshtml='
 export WINEDLLPATH="$prefix/bin64:$prefix/bin32"
@@ -49,9 +50,9 @@ EOF
     rm -r "$prefix/drive_c/windows/assembly"
     rm -r "$prefix/drive_c/windows/temp"
     rm "$prefix/drive_c/windows/Microsoft.NET"/NETFXRepair.*
-    rm "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*.exe
-    rm "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*.dll
-    rm "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*.hkf
+    #rm "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*.exe
+    #rm "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*.dll
+    #rm "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*.hkf
     rm -r "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*/WPF
     rm -r "$prefix/drive_c/windows/Microsoft.NET"/Framework*/*/SetupCache
     rm -r "$prefix/drive_c/users/$USER/AppData/Local/Temp"
