@@ -2,6 +2,7 @@
 set -e
 
 prefix="${prefix:-$HOME/.local/opt/discord}"
+config="${XDG_CONFIG_HOME:-$HOME/.config}/discord"
 
 fetch() {
     tmp=$(mktemp -d)
@@ -12,24 +13,21 @@ fetch() {
     tar xf discord.tar.gz
     mkdir -p "$prefix"
     mv Discord/* "$prefix"
-    chmod +x "$prefix/Discord"
-
-    fetch_asar  # Install by default
+    chmod +x "$prefix/discord"
 
     # I use this to send images
     mkdir -p "$prefix/send"
-}
-
-fetch_asar() {
-    wget 'https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar'
-    mv app.asar "$prefix/resources/app.asar"
 }
 
 asar() {
     tmp=$(mktemp -d)
     trap "rm -rf '$tmp'" EXIT
     cd "$tmp"
-    fetch_asar
+
+    wget 'https://github.com/GooseMod/OpenAsar/releases/download/nightly/app.asar'
+    for x in "$config"/app-*; do
+        cp app.asar "$x/resources/app.asar"
+    done
 }
 
 better() {
@@ -46,9 +44,9 @@ better() {
 run() {
     cd "$prefix"
     if command -v apulse > /dev/null 2> /dev/null; then
-        exec apulse ./Discord "$@"
+        exec apulse ./discord "$@"
     else
-        exec ./Discord "$@"
+        exec ./discord "$@"
     fi
 }
 
@@ -59,7 +57,7 @@ case "$1" in
     run) shift; run "$@"; exit ;;
 esac
 
-if [ ! -f "$prefix/Discord" ]; then
+if [ ! -f "$prefix/discord" ]; then
     fetch
 fi
 run "$@"

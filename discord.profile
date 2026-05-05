@@ -9,7 +9,10 @@ whitelist ~/.config/discord
 #whitelist ~/.config/BetterDiscord
 
 # setup/discord.sh
-private-bin mktemp,wget,rm,mv,chmod
+private-bin mktemp,wget,rm,mv,chmod,tar,gzip,mkdir,cp
+
+# Discords own new installer
+private-bin dirname
 
 # BetterDiscord installer
 #private-bin readlink,dirname

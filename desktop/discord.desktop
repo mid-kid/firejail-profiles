@@ -1,8 +1,10 @@
 [Desktop Entry]
-Type=Application
 Name=Discord
+StartupWMClass=discord
 Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
-GenericName=Instant Messanger
+GenericName=Internet Messenger
 Exec=~/.config/firejail/setup.sh discord --disable-smooth-scrolling
 Icon=discord
+Type=Application
 Categories=Network;InstantMessaging;
+Path=/usr/bin
