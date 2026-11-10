@@ -22,9 +22,9 @@ whitelist ~/.local/share/Paradox Interactive
 ignore private-dev
 
 # Steam needs to sandbox itself as well...
-#ignore seccomp
-seccomp !chroot,!mount,!name_to_handle_at,!pivot_root,!ptrace,!umount2
-seccomp.32 !process_vm_readv
+ignore seccomp
+#seccomp !chroot,!mount,!name_to_handle_at,!pivot_root,!ptrace,!umount2
+#seccomp.32 !process_vm_readv
 noblacklist /proc/sys/kernel/overflowuid
 noblacklist /proc/sys/kernel/overflowgid
 

@@ -1,5 +1,6 @@
 # vim:ft=firejail
 
-noblacklist ${RUNUSER}
-mkdir ${RUNUSER}/discord
-whitelist ${RUNUSER}/discord
+# TODO: Figure out where it lives now.... if I ever start caring again
+#noblacklist ${RUNUSER}
+#mkdir ${RUNUSER}/discord
+#whitelist ${RUNUSER}/discord
