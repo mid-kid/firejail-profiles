@@ -7,6 +7,7 @@ whitelist ~/.cache/winetricks
 
 ignore net none
 ignore no3d
+ignore seccomp  # TODO
 protocol unix,inet,inet6,netlink
 include ~/.config/firejail/inc/discord-ipc.inc
 include ~/.config/firejail/inc/firefox-escape.inc
