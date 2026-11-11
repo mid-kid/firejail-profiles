@@ -4,8 +4,6 @@ set -e
 
 prefix="${prefix:-$HOME/.local/opt/osulazer}"
 
-export PULSE_LATENCY_MSEC=22
-
 fetch() {
     tmp=$(mktemp -d)
     trap "rm -rf '$tmp'" EXIT
